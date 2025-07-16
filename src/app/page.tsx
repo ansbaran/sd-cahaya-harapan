@@ -1,18 +1,15 @@
 'use client';
 
-import { Typewriter } from 'react-simple-typewriter';
 import Image from 'next/image';
 import { useEffect, useState } from 'react';
 import KegiatanSection from '@/components/homepage/KegiatanSection';
 import AgendaSekolah from '@/components/homepage/AgendaSekolah';
 import BukuTamu from '@/components/homepage/BukuTamu';
 import dynamic from 'next/dynamic';
-import Footer from '@/components/common/Footer';
 
 const TypewriterClient = dynamic(() => import('@/components/TypewriterClient'), {
   ssr: false,
 });
-
 
 export default function Home() {
   const isClient = typeof window !== 'undefined';
@@ -29,7 +26,7 @@ export default function Home() {
       setCurrentImage((prev) => (prev + 1) % backgroundImages.length);
     }, 5000);
     return () => clearInterval(interval);
-  }, []);
+  }, [backgroundImages.length]);
 
   return (
     <div>
@@ -37,9 +34,8 @@ export default function Home() {
       <section className="relative bg-gradient-to-r from-blue-700 via-indigo-700 to-purple-700 text-white py-24 px-4 text-center overflow-hidden shadow-lg shadow-blue-500/30">
         <div className="max-w-4xl mx-auto z-10 relative">
           <h1 className="text-4xl md:text-6xl font-extrabold leading-tight drop-shadow-lg">
-  <TypewriterClient />
-</h1>
-
+            <TypewriterClient />
+          </h1>
           <p className="mt-6 text-lg md:text-xl text-white/90 max-w-2xl mx-auto drop-shadow-sm">
             Kami adalah sekolah Katolik yang berkomitmen membentuk generasi cerdas, beriman, dan berkarakter.
             Jelajahi situs ini untuk mengetahui lebih banyak tentang program unggulan kami.
@@ -60,7 +56,6 @@ export default function Home() {
             />
           </div>
         )}
-
         <div className="relative z-10 flex items-center justify-center h-full px-4">
           <div className="text-center text-white max-w-2xl w-full px-6 py-8 bg-black/40 rounded-xl shadow-xl border border-white/10">
             <h2 className="text-3xl sm:text-4xl font-bold mb-4">Informasi PPDB 2025</h2>
