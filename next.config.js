@@ -10,6 +10,7 @@ const nextConfig = {
     ],
   },
   eslint: {
+    // Abaikan error ESLint saat build (agar tidak gagal deploy)
     ignoreDuringBuilds: true,
   },
 };
